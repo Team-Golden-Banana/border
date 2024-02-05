@@ -1,6 +1,6 @@
 # Border Script for Undertale Yellow
 
-This script allows you with [UndertaleModTool](https://github.com/krzys-h/UndertaleModTool) to put borders in your game.
+This script allows you with [UndertaleModTool](https://github.com/krzys-h/UndertaleModTool) to put borders in the game.
 
 ## Instructions
 
