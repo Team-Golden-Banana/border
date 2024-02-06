@@ -549,21 +549,21 @@ public void AddCodeObj(string objName, uint eventSubtype, string codeName, strin
 {
     ImportGMLString(codeName, stringCode);
     var obj = Data.GameObjects.ByName(objName);
-    bool do_add = true;
+    bool doAdd = true;
     foreach (var evp in obj.Events)
     {
         foreach (var ev in evp)
         {
             if (ev.EventSubtype == eventSubtype)
             {
-                do_add = false;
+                doAdd = false;
                 var eventAction = NewEventAction();
                 eventAction.CodeId = Data.Code.ByName(codeName);
                 ev.Actions.Add(eventAction);
             }
         }
     }
-    if (do_add)
+    if (doAdd)
     {
         UndertaleGameObject.Event objEvent = new();
         objEvent.EventSubtype = eventSubtype;
