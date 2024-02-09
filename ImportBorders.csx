@@ -41,136 +41,136 @@ public void ReplaceCode()
         ImportGMLString(e, @"
 if live_call()
     return global.live_result;
-obj_border.draw_surf = true //application_surface_draw_enable(true)
-instance_destroy()
+obj_border.draw_surf = true; //application_surface_draw_enable(true);
+instance_destroy();
         ");
     }
     ImportGMLString("gml_Object_obj_darkruins_01_rope_Alarm_1", @"
-scr_cutscene_end()
-obj_pl.image_alpha = 1
-game_restart()
-instance_create(0, 0, obj_darkruins_01_resettext)
-scr_initialize()
-obj_border.draw_surf = true //application_surface_draw_enable(true)
+scr_cutscene_end();
+obj_pl.image_alpha = 1;
+game_restart();
+instance_create(0, 0, obj_darkruins_01_resettext);
+scr_initialize();
+obj_border.draw_surf = true; //application_surface_draw_enable(true);
     ");
     ImportGMLString("gml_Object_obj_screen_shatter_effect_Destroy_0", @"
-surface_free(surf_screen_copy)
-obj_border.draw_surf = true //application_surface_draw_enable(true)
+surface_free(surf_screen_copy);
+obj_border.draw_surf = true; //application_surface_draw_enable(true)
 ");
     ImportGMLString("gml_Object_obj_flowey_battle_screen_glitch_wheel_Draw_64", @"
 if live_call()
     return global.live_result;
-display_set_gui_size(-1, -1)
-obj_border.draw_surf = false //application_surface_draw_enable(false)
-var app_surf_height = surface_get_height(application_surface)
-var app_surf_width = surface_get_width(application_surface)
-var screen_parts = 20
-var part_height = (app_surf_height / screen_parts)
-surface_set_target(obj_border.surf)
+display_set_gui_size(-1, -1);
+obj_border.draw_surf = false; //application_surface_draw_enable(false);
+var app_surf_height = surface_get_height(application_surface);
+var app_surf_width = surface_get_width(application_surface);
+var screen_parts = 20;
+var part_height = (app_surf_height / screen_parts);
+surface_set_target(obj_border.surf);
 for (var i = 0; i < screen_parts; i++)
 {
-    var x_offset = irandom_range(-30, 30)
-    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1)
+    var x_offset = irandom_range(-30, 30);
+    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1);
 }
-surface_reset_target()
-display_set_gui_size(320, 240)
+surface_reset_target();
+display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_flowey_battle_screen_glitch_ending_Draw_64", @"
 if live_call()
     return global.live_result;
 display_set_gui_size(-1, -1)
-obj_border.draw_surf = false //application_surface_draw_enable(false)
-var app_surf_height = surface_get_height(application_surface)
-var app_surf_width = surface_get_width(application_surface)
-var screen_parts = 8
-var part_height = (app_surf_height / screen_parts)
-var part_width = (app_surf_width / screen_parts)
-surface_set_target(obj_border.surf)
+obj_border.draw_surf = false; //application_surface_draw_enable(false);
+var app_surf_height = surface_get_height(application_surface);
+var app_surf_width = surface_get_width(application_surface);
+var screen_parts = 8;
+var part_height = (app_surf_height / screen_parts);
+var part_width = (app_surf_width / screen_parts);
+surface_set_target(obj_border.surf);
 for (var i = 0; i < screen_parts; i++)
 {
     for (var j = 0; j < screen_parts; j++)
-        draw_surface_part_ext(application_surface, (j * part_width), (i * part_height), part_width, part_height, (j * part_width), (i * part_height), random_range(0.5, 1.5), random_range(0.5, 1.5), 16777215, 1)
+        draw_surface_part_ext(application_surface, (j * part_width), (i * part_height), part_width, part_height, (j * part_width), (i * part_height), random_range(0.5, 1.5), random_range(0.5, 1.5), 16777215, 1);
 }
-screen_parts = 6
+screen_parts = 6;
 for (i = 0; i < screen_parts; i++)
 {
     for (j = 0; j < screen_parts; j++)
-        draw_surface_part_ext(application_surface, irandom_range(0, 320), irandom_range(0, 240), irandom_range(0, 320), irandom_range(0, 240), irandom_range(0, 640), irandom_range(0, 480), 1, 1, 16777215, 1)
+        draw_surface_part_ext(application_surface, irandom_range(0, 320), irandom_range(0, 240), irandom_range(0, 320), irandom_range(0, 240), irandom_range(0, 640), irandom_range(0, 480), 1, 1, 16777215, 1);
 }
-surface_reset_target()
-display_set_gui_size(320, 240)
-draw_set_alpha(noise_alpha)
-draw_sprite_tiled(spr_flowey_battle_noise, 0, 0, 0)
-draw_set_alpha(1)
+surface_reset_target();
+display_set_gui_size(320, 240);
+draw_set_alpha(noise_alpha);
+draw_sprite_tiled(spr_flowey_battle_noise, 0, 0, 0);
+draw_set_alpha(1);
     ");
     ImportGMLString("gml_Object_obj_flowey_battle_screen_glitch_attack_switch_Draw_64", @"
 if live_call()
     return global.live_result;
-display_set_gui_size(-1, -1)
-obj_border.draw_surf = false //application_surface_draw_enable(false)
-var app_surf_height = surface_get_height(application_surface)
-var app_surf_width = surface_get_width(application_surface)
-var screen_parts = 8
-var part_height = (app_surf_height / screen_parts)
-var part_width = (app_surf_width / screen_parts)
-surface_set_target(obj_border.surf)
+display_set_gui_size(-1, -1);
+obj_border.draw_surf = false; //application_surface_draw_enable(false);
+var app_surf_height = surface_get_height(application_surface);
+var app_surf_width = surface_get_width(application_surface);
+var screen_parts = 8;
+var part_height = (app_surf_height / screen_parts);
+var part_width = (app_surf_width / screen_parts);
+surface_set_target(obj_border.surf);
 for (var i = 0; i < screen_parts; i++)
 {
     for (var j = 0; j < screen_parts; j++)
-        draw_surface_part_ext(application_surface, (j * part_width), (i * part_height), part_width, part_height, (j * part_width), (i * part_height), random_range(0.5, 1.5), random_range(0.5, 1.5), 16777215, 1)
+        draw_surface_part_ext(application_surface, (j * part_width), (i * part_height), part_width, part_height, (j * part_width), (i * part_height), random_range(0.5, 1.5), random_range(0.5, 1.5), 16777215, 1);
 }
-surface_reset_target()
-display_set_gui_size(320, 240)
+surface_reset_target();
+display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_flowey_battle_screen_glitch_Draw_64", @"
 if live_call()
     return global.live_result;
-display_set_gui_size(-1, -1)
-obj_border.draw_surf = false //application_surface_draw_enable(false)
-var app_surf_height = surface_get_height(application_surface)
-var app_surf_width = surface_get_width(application_surface)
-var screen_parts = 20
-var part_height = (app_surf_height / screen_parts)
-surface_set_target(obj_border.surf)
+display_set_gui_size(-1, -1);
+obj_border.draw_surf = false; //application_surface_draw_enable(false);
+var app_surf_height = surface_get_height(application_surface);
+var app_surf_width = surface_get_width(application_surface);
+var screen_parts = 20;
+var part_height = (app_surf_height / screen_parts);
+surface_set_target(obj_border.surf);
 for (var i = 0; i < screen_parts; i++)
 {
-    var x_offset = irandom_range(-50, 50)
-    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1)
+    var x_offset = irandom_range(-50, 50);
+    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1);
 }
-surface_reset_target()
-display_set_gui_size(320, 240)
+surface_reset_target();
+display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_flashback_transition_glitch_Draw_64", @"
 if live_call()
     return global.live_result;
-display_set_gui_size(-1, -1)
-obj_border.draw_surf = false //application_surface_draw_enable(false)
-var app_surf_height = surface_get_height(application_surface)
-var app_surf_width = surface_get_width(application_surface)
-var screen_parts = 20
-var part_height = (app_surf_height / screen_parts)
-surface_set_target(obj_border.surf)
+display_set_gui_size(-1, -1);
+obj_border.draw_surf = false; //application_surface_draw_enable(false);
+var app_surf_height = surface_get_height(application_surface);
+var app_surf_width = surface_get_width(application_surface);
+var screen_parts = 20;
+var part_height = (app_surf_height / screen_parts);
+surface_set_target(obj_border.surf);
 for (var i = 0; i < screen_parts; i++)
 {
-    var x_offset = irandom_range(-50, 50)
-    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1)
+    var x_offset = irandom_range(-50, 50);
+    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1);
 }
-surface_reset_target()
-display_set_gui_size(320, 240)
+surface_reset_target();
+display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_darkruins_01_rope_Draw_64", @"
 if (waiter == 4)
 {
-    display_set_gui_size(-1, -1)
-    obj_border.draw_surf = false //application_surface_draw_enable(false)
-    var app_surf_height = surface_get_height(application_surface)
-    var app_surf_width = surface_get_width(application_surface)
-    surface_set_target(obj_border.surf)
-    draw_surface_part_ext(application_surface, 0, 0, app_surf_width, (app_surf_height * 0.5), 20, 0, 1, 1, 16777215, 1)
-    draw_surface_part_ext(application_surface, 0, (app_surf_height * 0.5), app_surf_width, app_surf_height, -20, (app_surf_height * 0.5), 1, 1, 16777215, 1)
-    surface_reset_target()
-    draw_sprite_ext(spr_flowey, 0, flowey_x, flowey_y, 2, 2, 0, c_white, 1)
-    display_set_gui_size(320, 240)
+    display_set_gui_size(-1, -1);
+    obj_border.draw_surf = false; //application_surface_draw_enable(false);
+    var app_surf_height = surface_get_height(application_surface);
+    var app_surf_width = surface_get_width(application_surface);
+    surface_set_target(obj_border.surf);
+    draw_surface_part_ext(application_surface, 0, 0, app_surf_width, (app_surf_height * 0.5), 20, 0, 1, 1, 16777215, 1);
+    draw_surface_part_ext(application_surface, 0, (app_surf_height * 0.5), app_surf_width, app_surf_height, -20, (app_surf_height * 0.5), 1, 1, 16777215, 1);
+    surface_reset_target();
+    draw_sprite_ext(spr_flowey, 0, flowey_x, flowey_y, 2, 2, 0, c_white, 1);
+    display_set_gui_size(320, 240);
 }
     ");
     ImportGMLString("gml_Object_obj_screen_shatter_effect_Draw_64", @"
@@ -178,54 +178,56 @@ if live_call()
     return global.live_result;
 if (surf_screen_noloop == 0)
 {
-    surface_set_target(surf_screen_copy)
-    draw_clear_alpha(c_black, 0)
-    surface_reset_target()
-    surface_copy(surf_screen_copy, 0, 0, application_surface)
-    obj_border.draw_surf = false //application_surface_draw_enable(false)
-    surf_screen_noloop = 1
+    if !surface_exists(surf_screen_copy)
+        surf_screen_copy = surface_create(surface_get_width(application_surface), surface_get_height(application_surface));
+    surface_set_target(surf_screen_copy);
+    draw_clear_alpha(c_black, 0);
+    surface_reset_target();
+    surface_copy(surf_screen_copy, 0, 0, application_surface);
+    obj_border.draw_surf = false; //application_surface_draw_enable(false);
+    surf_screen_noloop = 1;
 }
 else if (!surface_exists(surf_screen_copy))
 {
-    surf_screen_noloop = 0
+    surf_screen_noloop = 0;
     return;
 }
-var w_scale = (surface_get_width(application_surface) / 320)
-var h_scale = (surface_get_height(application_surface) / 240)
-var w_multiplier = (320 / surface_get_width(application_surface)) / obj_border.scale_x
-var h_multiplier = (240 / surface_get_height(application_surface)) / obj_border.scale_y
-var v = 0
-var h = 0
-surface_set_target(obj_border.surf)
+var w_scale = (surface_get_width(application_surface) / 320);
+var h_scale = (surface_get_height(application_surface) / 240);
+var w_multiplier = obj_border.scale_x;
+var h_multiplier = obj_border.scale_y;
+var v = 0;
+var h = 0;
+surface_set_target(obj_border.surf);
 for (var i = 0; i < total_number; i++)
 {
     if (h > (h_number - 1))
     {
-        h -= h_number
-        v += 1
+        h -= h_number;
+        v += 1;
     }
-    draw_surface_part_ext(surf_screen_copy, (h * (h_width * w_scale)), (v * (v_height * h_scale)), (h_width * w_scale), (v_height * h_scale), piece_x[i], piece_y[i], w_multiplier, h_multiplier, 16777215, 1)
-    h += 1
+    draw_surface_part_ext(surf_screen_copy, (h * (h_width * w_scale)), (v * (v_height * h_scale)), (h_width * w_scale), (v_height * h_scale), piece_x[i], piece_y[i], w_multiplier, h_multiplier, 16777215, 1);
+    h += 1;
 }
-surface_reset_target()
+surface_reset_target();
     ");
     ImportGMLString("gml_Object_obj_flowey_battle_screen_glitch_fight_Draw_64", @"
 if live_call()
     return global.live_result;
-display_set_gui_size(-1, -1)
-obj_border.draw_surf = false //application_surface_draw_enable(false)
-var app_surf_height = surface_get_height(application_surface)
-var app_surf_width = surface_get_width(application_surface)
-var screen_parts = 20
-var part_height = (app_surf_height / screen_parts)
-surface_set_target(obj_border.surf)
+display_set_gui_size(-1, -1);
+obj_border.draw_surf = false; //application_surface_draw_enable(false);
+var app_surf_height = surface_get_height(application_surface);
+var app_surf_width = surface_get_width(application_surface);
+var screen_parts = 20;
+var part_height = (app_surf_height / screen_parts);
+surface_set_target(obj_border.surf);
 for (var i = 0; i < screen_parts; i++)
 {
-    var x_offset = irandom_range(-30, 30)
-    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1)
+    var x_offset = irandom_range(-30, 30);
+    draw_surface_part_ext(application_surface, 0, (i * part_height), app_surf_width, part_height, x_offset, (i * part_height), 1, 1, 16777215, 1);
 }
-surface_reset_target()
-display_set_gui_size(320, 240)
+surface_reset_target();
+display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_robot_build_item_Draw_75", @"
 draw_set_alpha(obj_robot_build_controller.draw_alpha);
