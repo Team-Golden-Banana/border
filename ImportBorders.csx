@@ -194,8 +194,8 @@ else if (!surface_exists(surf_screen_copy))
 }
 var w_scale = (surface_get_width(application_surface) / 320);
 var h_scale = (surface_get_height(application_surface) / 240);
-var w_multiplier = obj_border.scale_x;
-var h_multiplier = obj_border.scale_y;
+var w_multiplier = obj_border.scale_x / 2;
+var h_multiplier = obj_border.scale_y / 2;
 var v = 0;
 var h = 0;
 surface_set_target(obj_border.surf);
