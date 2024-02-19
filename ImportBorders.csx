@@ -194,8 +194,8 @@ else if (!surface_exists(surf_screen_copy))
 }
 var w_scale = (surface_get_width(application_surface) / 320);
 var h_scale = (surface_get_height(application_surface) / 240);
-var w_multiplier = obj_border.scale_x / 2;
-var h_multiplier = obj_border.scale_y / 2;
+var w_multiplier = (obj_border.SF * obj_border.SRF) / 2;
+var h_multiplier = (obj_border.SF * obj_border.SRF) / 2;
 var v = 0;
 var h = 0;
 surface_set_target(obj_border.surf);
@@ -230,149 +230,135 @@ surface_reset_target();
 display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_robot_build_item_Draw_75", @"
+if instance_exists(obj_border)
+    display_set_gui_maximise((obj_border.SF * obj_border.SRF) / 2, (obj_border.SF * obj_border.SRF) / 2, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(640, 480);
 draw_set_alpha(obj_robot_build_controller.draw_alpha);
-image_xscale /= 2;
-image_yscale /= 2;
-x /= 2;
-y /= 2;
 draw_self();
-x *= 2;
-y *= 2;
-image_xscale *= 2;
-image_yscale *= 2;
 draw_set_alpha(1);
+if instance_exists(obj_border)
+    display_set_gui_maximise(obj_border.SF * obj_border.SRF, obj_border.SF * obj_border.SRF, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_robot_build_cursor_Draw_75", @"
-var pxc = image_xscale;
-var pys = image_yscale;
-if instance_exists(obj_border) {
-    if obj_border.enabled {
-        image_xscale = obj_border.SF / (obj_border.SF * 2);
-        image_yscale = obj_border.SF / (obj_border.SF * 2);
-        x *= obj_border.SF / (obj_border.SF * 2);
-        y *= obj_border.SF / (obj_border.SF * 2);
-        x += obj_border.pos_x / (obj_border.SF * 2);
-        y += obj_border.pos_y / (obj_border.SF * 2);
-    } else {
-        image_xscale /= 2;
-        image_yscale /= 2;
-        x /= 2;
-        y /= 2;
-        x += (160 * obj_border.SF) / (obj_border.SF * 2);
-        y += (30 * obj_border.SF) / (obj_border.SF * 2);
-    }
-} else
-    display_set_gui_maximise(640, 480);
+if instance_exists(obj_border)
+    display_set_gui_maximise((obj_border.SF * obj_border.SRF) / 2, (obj_border.SF * obj_border.SRF) / 2, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(640, 480);
 draw_self();
-if instance_exists(obj_border) {
-    if obj_border.enabled {
-        x -= obj_border.pos_x / (obj_border.SF * 2);
-        y -= obj_border.pos_y / (obj_border.SF * 2);
-        x /= obj_border.SF / (obj_border.SF * 2);
-        y /= obj_border.SF / (obj_border.SF * 2);
-        image_xscale = pxc;
-        image_yscale = pys;
-    } else {
-        x -= (160 * obj_border.SF) / (obj_border.SF * 2);
-        y -= (30 * obj_border.SF) / (obj_border.SF * 2);
-        image_xscale *= 2;
-        image_yscale *= 2;
-        x *= 2;
-        y *= 2;
-    }
-} else
-    display_set_gui_maximise(320, 240);
+if instance_exists(obj_border)
+    display_set_gui_maximise(obj_border.SF * obj_border.SRF, obj_border.SF * obj_border.SRF, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_robot_build_controller_Draw_64", @"
-    draw_set_alpha(draw_alpha)
-draw_set_color(c_black)
-draw_rectangle(0, 0, 320, 240, false)
-var robot_box_xx = 60
-var robot_box_yy = 20
-var robot_box_width = (robot_box_xx + 220)
-var robot_box_height = (robot_box_yy + 260)
-draw_set_color(c_white)
-draw_rectangle(((robot_box_xx - 4) / 2), ((robot_box_yy - 4) / 2), ((robot_box_width + 4) / 2), ((robot_box_height + 4) / 2), false)
-draw_set_color(c_black)
-draw_rectangle((robot_box_xx / 2), (robot_box_yy / 2), (robot_box_width / 2), (robot_box_height / 2), false)
-draw_set_color(c_green)
-draw_rectangle(((robot_box_xx + 20) / 2), ((robot_box_yy + 20) / 2), ((robot_box_width - 20) / 2), ((robot_box_height - 20) / 2), true)
-draw_line((((robot_box_xx + 20) + 90) / 2), ((robot_box_yy + 20) / 2), (((robot_box_xx + 20) + 90) / 2), ((robot_box_height - 20) / 2))
-draw_line(((robot_box_xx + 20) / 2), (((robot_box_yy + 20) + 110) / 2), ((robot_box_width - 20) / 2), (((robot_box_yy + 20) + 110) / 2))
-var box_select_xx = 580
-var box_select_yy = 20
-var box_select_width = (box_select_xx - 220)
-var box_select_height = (box_select_yy + 260)
-draw_set_color(c_white)
-draw_rectangle(((box_select_xx + 4) / 2), ((box_select_yy - 4) / 2), ((box_select_width - 4) / 2), ((box_select_height + 4) / 2), false)
-draw_set_color(c_dkgray)
-draw_rectangle((box_select_xx / 2), (box_select_yy / 2), (box_select_width / 2), (box_select_height / 2), false)
-if (!global.dialogue_open) {
-    var dbox_xx = 60
-    var dbox_yy = 320
-    var dbox_width = (dbox_xx + 420)
-    var dbox_height = (dbox_yy + 128)
-    draw_set_color(c_white)
-    draw_rectangle(((dbox_xx - 4) / 2), ((dbox_yy - 4) / 2), ((dbox_width + 4) / 2), ((dbox_height + 4) / 2), false)
-    draw_set_color(c_black)
-    draw_rectangle((dbox_xx / 2), (dbox_yy / 2), (dbox_width / 2), (dbox_height / 2), false)
-    draw_set_color(c_white)
-    draw_set_font(fnt_main_battle)
-    draw_text_transformed(40, 165, string_hash_to_newline((((((string(global.action_key) + @' - Select/Place#') + string(global.pause_key)) + @' - Cancel Selection#') + string(global.cancel_key)) + @' - Rotate/Scale item')), 0.5, 0.5, 0)
-    var butt1_xx = 500
-    var butt1_yy = 320
-    var butt1_width = (butt1_xx + 80)
-    var butt1_height = (butt1_yy + 50)
-    var butt1_color = c_white
+if instance_exists(obj_border)
+    display_set_gui_maximise((obj_border.SF * obj_border.SRF) / 2, (obj_border.SF * obj_border.SRF) / 2, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(640, 480);
+draw_set_alpha(draw_alpha);
+draw_set_color(c_black);
+draw_rectangle(0, 0, 640, 480, false);
+var robot_box_xx = 60;
+var robot_box_yy = 20;
+var robot_box_width = (robot_box_xx + 220);
+var robot_box_height = (robot_box_yy + 260);
+draw_set_color(c_white);
+draw_rectangle((robot_box_xx - 4), (robot_box_yy - 4), (robot_box_width + 4), (robot_box_height + 4), false);
+draw_set_color(c_black);
+draw_rectangle(robot_box_xx, robot_box_yy, robot_box_width, robot_box_height, false);
+draw_set_color(c_green);
+draw_rectangle((robot_box_xx + 20), (robot_box_yy + 20), (robot_box_width - 20), (robot_box_height - 20), true);
+draw_line(((robot_box_xx + 20) + 90), (robot_box_yy + 20), ((robot_box_xx + 20) + 90), (robot_box_height - 20));
+draw_line((robot_box_xx + 20), ((robot_box_yy + 20) + 110), (robot_box_width - 20), ((robot_box_yy + 20) + 110));
+var box_select_xx = 580;
+var box_select_yy = 20;
+var box_select_width = (box_select_xx - 220);
+var box_select_height = (box_select_yy + 260);
+draw_set_color(c_white);
+draw_rectangle((box_select_xx + 4), (box_select_yy - 4), (box_select_width - 4), (box_select_height + 4), false);
+draw_set_color(c_dkgray);
+draw_rectangle(box_select_xx, box_select_yy, box_select_width, box_select_height, false);
+if !global.dialogue_open {
+    var dbox_xx = 60;
+    var dbox_yy = 320;
+    var dbox_width = (dbox_xx + 420);
+    var dbox_height = (dbox_yy + 128);
+    draw_set_color(c_white);
+    draw_rectangle((dbox_xx - 4), (dbox_yy - 4), (dbox_width + 4), (dbox_height + 4), false);
+    draw_set_color(c_black);
+    draw_rectangle(dbox_xx, dbox_yy, dbox_width, dbox_height, false);
+    draw_set_color(c_white);
+    draw_set_font(fnt_main_battle);
+    draw_text(80, 330, string_hash_to_newline(string(string(global.action_key) + @' - Select/Place#' + string(global.pause_key) + @' - Cancel selection#' + string(global.cancel_key) + @' - Rotate/Scale item')));
+    var butt1_xx = 500;
+    var butt1_yy = 320;
+    var butt1_width = (butt1_xx + 80);
+    var butt1_height = (butt1_yy + 50);
+    var butt1_color = c_white;
     if (gui_button_selected == 0)
-        butt1_color = 65535
-    draw_set_color(butt1_color)
-    draw_rectangle(((butt1_xx - 4) / 2), ((butt1_yy - 4) / 2), ((butt1_width + 4) / 2), ((butt1_height + 4) / 2), false)
-    draw_set_color(c_black)
-    draw_rectangle((butt1_xx / 2), (butt1_yy / 2), (butt1_width / 2), (butt1_height / 2), false)
-    draw_set_font(fnt_main)
-    draw_set_color(butt1_color)
-    draw_text((((butt1_xx + 14) / 2) - 3), ((butt1_yy + 7) / 2), string_hash_to_newline(@'UNDO'))
-    var butt2_xx = 500
-    var butt2_yy = 398
-    var butt2_width = (butt2_xx + 80)
-    var butt2_height = (butt2_yy + 50)
-    var butt2_color = c_white
+        butt1_color = 65535;
+    draw_set_color(butt1_color);
+    draw_rectangle((butt1_xx - 4), (butt1_yy - 4), (butt1_width + 4), (butt1_height + 4), false);
+    draw_set_color(c_black);
+    draw_rectangle(butt1_xx, butt1_yy, butt1_width, butt1_height, false);
+    draw_set_font(fnt_mainb);
+    draw_set_color(butt1_color);
+    draw_text((butt1_xx + 14), (butt1_yy + 7), string_hash_to_newline(@'UNDO'));
+    var butt2_xx = 500;
+    var butt2_yy = 398;
+    var butt2_width = (butt2_xx + 80);
+    var butt2_height = (butt2_yy + 50);
+    var butt2_color = c_white;
     if (gui_button_selected == 1)
-        butt2_color = 65535
-    draw_set_color(butt2_color)
-    draw_rectangle(((butt2_xx - 4) / 2), ((butt2_yy - 4) / 2), ((butt2_width + 4) / 2), ((butt2_height + 4) / 2), false)
-    draw_set_color(c_black)
-    draw_rectangle((butt2_xx / 2), (butt2_yy / 2), (butt2_width / 2), (butt2_height / 2), false)
-    draw_set_font(fnt_main)
-    draw_set_color(butt2_color)
-    draw_text(((butt2_xx + 14) / 2), ((butt2_yy + 7) / 2), string_hash_to_newline(@'DONE'))
+        butt2_color = 65535;
+    draw_set_color(butt2_color);
+    draw_rectangle((butt2_xx - 4), (butt2_yy - 4), (butt2_width + 4), (butt2_height + 4), false);
+    draw_set_color(c_black);
+    draw_rectangle(butt2_xx, butt2_yy, butt2_width, butt2_height, false);
+    draw_set_font(fnt_mainb);
+    draw_set_color(butt2_color);
+    draw_text((butt2_xx + 14), (butt2_yy + 7), string_hash_to_newline(@'DONE'));
 }
-var robot_item_number = instance_number(obj_robot_build_item)
-draw_set_color(c_white)
+var robot_item_number = instance_number(obj_robot_build_item);
+draw_set_color(c_white);
 if (robot_item_number >= item_number_max)
-    draw_set_color(c_red)
-draw_set_font(fnt_main)
-draw_set_halign(fa_center)
-draw_text(160, 140, string_hash_to_newline(((string(robot_item_number) + @' / ') + string(item_number_max))))
-draw_set_halign(fa_left)
-draw_set_color(c_white)
-draw_sprite_ext(robot_item[0], 0, 207.5, 42.5, (robot_item_scale[0] / 2), (robot_item_scale[0] / 2), 0, c_white, draw_alpha)
-draw_sprite_ext(robot_item[1], 0, 262.5, 42.5, (robot_item_scale[1] / 2), (robot_item_scale[1] / 2), 0, c_white, draw_alpha)
-draw_sprite_ext(robot_item[2], 0, 207.5, 112.5, (robot_item_scale[2] / 2), (robot_item_scale[2] / 2), 0, c_white, draw_alpha)
-draw_sprite_ext(robot_item[3], 0, 262.5, 112.5, (robot_item_scale[3] / 2), (robot_item_scale[3] / 2), 0, c_white, draw_alpha)
-draw_set_alpha(1)
+    draw_set_color(c_red);
+draw_set_font(fnt_mainb);
+draw_set_halign(fa_center);
+draw_text(320, 280, string_hash_to_newline(((string(robot_item_number) + @' / ') + string(item_number_max))));
+draw_set_halign(fa_left);
+draw_set_color(c_white);
+draw_sprite_ext(robot_item[0], 0, 415, 85, robot_item_scale[0], robot_item_scale[0], 0, c_white, draw_alpha);
+draw_sprite_ext(robot_item[1], 0, 525, 85, robot_item_scale[1], robot_item_scale[1], 0, c_white, draw_alpha);
+draw_sprite_ext(robot_item[2], 0, 415, 225, robot_item_scale[2], robot_item_scale[2], 0, c_white, draw_alpha);
+draw_sprite_ext(robot_item[3], 0, 525, 225, robot_item_scale[3], robot_item_scale[3], 0, c_white, draw_alpha);
+draw_set_alpha(1);
+if instance_exists(obj_border)
+    display_set_gui_maximise(obj_border.SF * obj_border.SRF, obj_border.SF * obj_border.SRF, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(320, 240);
     ");
     ImportGMLString("gml_Object_obj_chem_05_computer_Draw_64", @"
 if live_call()
     return global.live_result;
-var camera_x = (camera_get_view_x(view_camera[0]) * 2)
-var camera_y = (camera_get_view_y(view_camera[0]) * 2)
-draw_set_font(fnt_chem_computer_screen)
-draw_set_color(c_lime)
-draw_text_transformed(((((x * 2) + 155) - camera_x) / 2), (((y + 126) - camera_y) / 2), (screen_message_current + screen_cursor), 0.5, 0.5, 0)
-draw_set_color(c_black)
-draw_rectangle(0, 0, -200, 499.5, false)
+if instance_exists(obj_border)
+    display_set_gui_maximise((obj_border.SF * obj_border.SRF) / 2, (obj_border.SF * obj_border.SRF) / 2, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(640, 480);
+var camera_x = (camera_get_view_x(view_camera[0]) * 2);
+var camera_y = (camera_get_view_y(view_camera[0]) * 2);
+draw_set_font(fnt_chem_computer_screen);
+draw_set_color(c_lime);
+draw_text((((x * 2) + 155) - camera_x), ((y + 126) - camera_y), (screen_message_current + screen_cursor));
+draw_set_color(c_black);
+draw_rectangle(0, 0, -400, 999, false);
+if instance_exists(obj_border)
+    display_set_gui_maximise(obj_border.SF * obj_border.SRF, obj_border.SF * obj_border.SRF, obj_border.pos_x, obj_border.pos_y);
+else
+    display_set_gui_size(320, 240);
     ");
 }
 
