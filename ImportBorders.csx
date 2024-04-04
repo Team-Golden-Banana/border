@@ -788,6 +788,7 @@ AssignBorderBackground("spr_border_final_ceroba", "bg_border_final_ceroba.png", 
 AssignBorderBackground("spr_border_geno_ceroba", "bg_border_geno_ceroba.png", 0, 0, 1920, 1080);
 AssignBorderBackground("spr_border_axis", "bg_border_axis.png", 0, 0, 1920, 1080);
 AssignBorderBackground("spr_border_feisty_four", "bg_border_feisty_four.png", 0, 0, 1920, 1080);
+AssignBorderBackground("spr_border_casino", "bg_border_casino.png", 0, 0, 1920, 1080);
 
 bool addObj = true;
 
