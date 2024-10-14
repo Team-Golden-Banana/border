@@ -1,5 +1,5 @@
-// Art by Kael (@everyshape in Gamejolt)
-// Script by Zorro (@ZorroMundo in Gamejolt)
+// Art by Tobias (@everyshape in Gamejolt)
+// Script by ryi3r (@ryi3r in Gamejolt)
 // Works on UTY 1.1
 
 using UndertaleModLib.Models;
@@ -914,5 +914,5 @@ else
 ScriptMessage(@"Succesfully imported borders!
 
 Credits:
-Art by Kael (@everyshape in Gamejolt)
-Script by Zorro (@ZorroMundo in Gamejolt)");
+Art by Tobias (@everyshape in Gamejolt)
+Script by ryi3r (@ryi3r in Gamejolt)");
